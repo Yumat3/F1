@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <title>F1 A-Frame Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="ferrari" src="ferrari_f1_2019.glb" ></a-asset-item>
+        <a-asset-item id="aston" src="aston_martin_f1_amr23_2023.glb" ></a-asset-item>
+        <a-asset-item id="mclaren" src="f1_2021_mclaren_mcl35m.glb" ></a-asset-item>
+        <a-asset-item id="audi" src="2026__f1_audi_fom_update.glb" ></a-asset-item>
+        <a-asset-item id="redbull" src="oracle_red_bull_f1_car_rb19_2023.glb"></a-asset_item>
+        <a-asset-item id="generic" src="f1_2022_generic.glb"></a-asset_item>
+      </a-assets>
+
+      <a-gltf-model  src="#ferrari" position="-20 0 -5" animation-mixer scale="0.5 0.5 0.5"></a-gltf-model>
+      <a-gltf-model  src="#aston" position="-15 0 -5" animation-mixer scale="0.5 0.5 0.5"></a-gltf-model>
+      <a-gltf-model  src="#mclaren" position="-10 0 -5" animation-mixer scale="0.5 0.5 0.5"></a-gltf-model>
+      <a-gltf-model  src="#audi" position="-5 0 -5" animation-mixer scale="0.5 0.5 0.5"></a-gltf-model>
+      <a-gltf-model  src="#redbull" position="5 0 -5" animation-mixer scale="0.5 0.5 0.5"></a-gltf-model>
+      <a-gltf-model  src="#generic" position="10 0 -5" animation-mixer scale="0.5 0.5 0.5"></a-gltf-model>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="100" height="100" color="#7BC8A4"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+      <a-camera position="0 1.6 0"></a-camera>
+    </a-scene>
+  </body>
+</html>

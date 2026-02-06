@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>F1 A-Frame Game</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+  <script src="carControls.js"></script>
+  <script src="cameraFollow.js"></script>
+  <script src="lapSystem.js"></script>
+  <script src="carSelector.js"></script>
+  <style>
+    body { margin:0; overflow:hidden; font-family:monospace; }
+
+    #hud {
+      position:absolute;
+      top:10px; left:10px;
+      color:white;
+      background:rgba(0,0,0,0.6);
+      padding:10px;
+      z-index:5;
+    }
+
+    #menu {
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:black;
+      color:white;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:20px;
+      z-index:10;
+    }
+
+    button { padding:10px 20px; font-size:18px; }
+  </style>
+</head>
+
+<body>
+
+<div id="hud">
+  Speed: <span id="speed">0</span><br>
+  Lap: <span id="lap">0.00</span>
+</div>
+
+<div id="menu">
+  <h1>Select Your F1 Team</h1>
+  <button onclick="selectCar('redbull')">Red Bull (Fast)</button>
+  <button onclick="selectCar('mercedes')">Mercedes (Grip)</button>
+  <button onclick="selectCar('williams')">Williams (Easy)</button>
+</div>
+
+<a-scene>
+
+  <a-assets>
+    <a-asset-item id="f1model" src="f1car.glb"></a-asset-item>
+    <a-asset-item id="f2model" src="f1mclaren.glb"></a-asset-item>
+    <a-asset-item id="f3model" src="f1ferrari.glb"></a-asset-item>
+    <a-asset-item id = "track" src = "track.glb"></a-asset-item>
+  </a-assets>
+
+  <a-sky color="#87CEEB"></a-sky>
+  <a-gltf-model src = "#track" position = "5 1 0" scale = "6.07 6.07 6.07"></a-gltf-model>
+  <!-- Grass world -->
+  <a-plane rotation="-90 0 0" width="2000" height="400" color="#2e8b57"></a-plane>
+
+  <!-- Long straight track -->
+  <a-plane rotation="-90 0 0" width="1800" height="20" color="#3a3a3a"></a-plane>
+
+  <!-- Track walls -->
+  <a-box position="0 1 10" width="1800" height="2" depth="1" color="white"></a-box>
+  <a-box position="0 1 -10" width="1800" height="2" depth="1" color="white"></a-box>
+
+  <!-- Finish line -->
+  <a-plane id="finish" rotation="-90 0 0"width="4" height="20" position="-850 0.02 0" color="yellow"></a-plane>
+
+  <!-- Car spawns here -->
+  <a-entity id="car"></a-entity>
+
+  <!-- Camera -->
+  <a-entity id="cameraRig" camera-follow>
+    <a-camera position="0 4 -8"></a-camera>
+  </a-entity>
+
+</a-scene>
+</body>
+</html>
