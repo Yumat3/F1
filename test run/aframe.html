@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>F1 A-Frame Game</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+  <script src="carControls.js"></script>
+  <script src="cameraFollow.js"></script>
+  <script src="lapSystem.js"></script>
+  <script src="carSelector.js"></script>
+  <script src="script.js"></script>
+  <script src="wall.js"></script>
+  <style>
+    body { margin:0; overflow:hidden; font-family:monospace; }
+
+    #hud {
+      position:absolute;
+      top:10px; left:10px;
+      color:white;
+      background:rgba(0,0,0,0.6);
+      padding:10px;
+      z-index:5;
+    }
+
+    #menu {
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:black;
+      color:white;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:20px;
+      z-index:10;
+    }
+
+    button { padding:10px 20px; font-size:18px; }
+  </style>
+</head>
+
+<body>
+
+<div id="hud">
+  Speed: <span id="speed">0</span><br>
+  Lap: <span id="lap">0.00</span><br>
+  Health: <span id="health">100</span>
+</div>
+
+<div id="start-light" style="position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);font-size:72px;color:#fff;text-shadow:0 0 10px #000;z-index:10;display:none;">3</div>
+
+<div id="end-screen" style="display:none;position:absolute;top:0;left:0;width:100vw;height:100vh;z-index:20;background:rgba(0,0,0,0.85);color:#fff;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+  <div id="end-message" style="font-size:90px;font-weight:800;text-transform:uppercase;letter-spacing:5px;margin-bottom:20px;"></div>
+  <div id="end-submessage" style="font-size:28px; margin-bottom:30px;"></div>
+  <button id="restart-btn" style="padding:14px 30px;font-size:24px;font-weight:700;border:2px solid #fff;color:#fff;background:transparent;cursor:pointer;">Restart</button>
+</div>
+
+<div id="menu">
+  <h1>Select Your F1 Team</h1>
+  <button onclick="selectCar('pirelli')">Pirelli (Fast)</button>
+  <button onclick="selectCar('mclaren')">McLaren (Grip)</button>
+  <button onclick="selectCar('ferrari')">Ferrari (Speed)</button>
+</div>
+
+<a-scene>
+
+  <a-assets>
+    <a-asset-item id="pirelli" src="f1car.glb"></a-asset-item>
+    <a-asset-item id="mclaren" src="f1mclaren.glb"></a-asset-item>
+    <a-asset-item id="ferrari" src="f1ferrari.glb"></a-asset-item>
+    <a-asset-item id = "track" src = "track (3).glb"></a-asset-item>
+  </a-assets>
+
+  <a-sky color="#87CEEB"></a-sky>
+
+  <a-gltf-model src = "#track" position = "50 4 250" scale = "6.07 6.07 6.07"></a-gltf-model>
+  <!-- Grass world -->
+  <a-plane rotation="-90 0 0" width="2000" height="400" color="#2e8b57"></a-plane>
+
+  <!-- Long straight track -->
+  <a-plane rotation="-90 0 0" width="1800" height="20" color="#3a3a3a"></a-plane>
+
+  <!-- Track walls -->
+  <a-box position="0 1 10" width="1800" height="2" depth="1" color="white"></a-box>
+  <a-box position="0 1 -10" width="1800" height="2" depth="1" color="white"></a-box>
+
+  <!-- Finish line -->
+  <a-plane id="finish" rotation="-90 0 0" width="4" height="20" position="50 0.02 200" color="yellow"></a-plane>
+
+  <!-- Car spawns here -->
+  <a-entity id="car"></a-entity>
+  <!-- <a-gtlf-model src = "#f2model" position = "-840 -2 0">
+    <a-camera id="car" position = "0 2 0" wasd-controls-enabled="false">
+      </a-camera>
+  </a-gtlf-model> -->
+
+  <!-- Camera -->
+  <!-- <a-entity id="cameraRig" camera-follow>
+    <a-camera position="0 4 -8" wasd-controls-enabled="false">
+      <a-gltf-model src = "#f3model"  rotaion="0 90 0" position = "-840 0 0" scale = "0.8 0.8 0.8"></a-gltf-model>
+    </a-camera>
+  </a-entity> -->
+  <!-- <a-camera active id="mainCamera" wasd-controls="acceleration: 100; fly: true" position="0 1.6 0">
+    <a-cursor></a-cursor>
+  </a-camera> -->
+</a-scene>
+</body>
+</html>
