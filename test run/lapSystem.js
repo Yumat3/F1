@@ -3,7 +3,7 @@ AFRAME.registerComponent('lap-system', {
     this.lapStart = performance.now();
     this.lastCross = 0;
     this.lapCount = 0;
-    this.lapsToWin = 3;
+    this.lapsToWin = 5;
     this.lastX = 0; // Track previous x position for direction
     document.getElementById('lap').textContent = `${this.lapCount}/${this.lapsToWin}`;
   },
@@ -29,7 +29,7 @@ AFRAME.registerComponent('lap-system', {
 
         if (this.lapCount >= this.lapsToWin) {
           window.raceWon = true;
-          showEndScreen('YOU WIN', 'Three laps complete. Congratulations!', '#00ff99');
+          showEndScreen('YOU WIN', 'Five laps complete. Congratulations!', '#00ff99');
 
           // stop car
           const car = document.getElementById('car');

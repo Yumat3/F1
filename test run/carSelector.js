@@ -1,7 +1,7 @@
 let carStats = {
-  pirelli: { maxSpeed:0.08, acceleration:0.005, handling:1.2, braking:0.006, grip:0.993 },
-  mclaren:{ maxSpeed:0.067, acceleration:0.004, handling:2.5, braking:0.006, grip:0.995 },
-  ferrari:{ maxSpeed:0.07, acceleration:0.003, handling:1.8, braking:0.006, grip:0.980 }
+  pirelli: { maxSpeed:0.025, acceleration:0.005, handling:0.8, braking:0.006, grip:0.970 },
+  mclaren:{ maxSpeed:0.017,  acceleration:0.004, handling:0.9, braking:0.006, grip:0.980 },
+  ferrari:{ maxSpeed:0.022, acceleration:0.003, handling:0.7, braking:0.006, grip:0.960 }
 };
 
 function selectCar(team) {
